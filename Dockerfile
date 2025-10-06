@@ -1,12 +1,13 @@
-# Usar la imagen oficial de Gotenberg
+# Usar la imagen oficial de Gotenberg con configuración optimizada
 FROM gotenberg/gotenberg:8
 
-# Gotenberg ya expone el puerto 3000 por defecto
+# Exponer puerto
 EXPOSE 3000
 
-# Configuración optimizada para Railway
+# Configuración para Railway - inicio más rápido
 ENV API_TIMEOUT=30s
 ENV LOG_LEVEL=INFO
+ENV CHROMIUM_DISABLE_ROUTES=false
 
-# Gotenberg se ejecuta automáticamente al iniciar el contenedor
-# No necesitamos CMD porque la imagen base ya lo tiene configurado
+# Gotenberg se ejecuta automáticamente
+# El healthcheck se hace en /health
